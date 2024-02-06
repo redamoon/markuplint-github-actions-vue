@@ -13,8 +13,6 @@ jobs:
           node-version: '20.11.0'
       - name: npm install
         run: npm install
-        working-directory: ./app
-      - uses: reviewdog/action-setup@v1
       - name: Run Markuplint
         run: |
           ./markuplint-check.sh
