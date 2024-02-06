@@ -1,0 +1,20 @@
+name: lint
+on:
+  pull_request:
+    branches: [ main, develop ]
+jobs:
+  lint:
+    name: lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '20.11.0'
+      - name: yarn install
+        run: yarn install
+        working-directory: ./app
+      - uses: reviewdog/action-setup@v1
+      - name: Run Markuplint
+        run: |
+          ./markuplint-check.sh
